@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <map>
 using namespace std;
 
 struct Edge
@@ -63,6 +64,8 @@ vector<Node *> Create()
 
 void GetAllNodes(vector<Node *> nodes)
 {
+	map<int, int> DegreeNode;
+	map<int, int>::iterator iter;
 	for (int i = 0; i < nodes.size(); i++)
 	{
 		cout << "起点编号：" << nodes[i]->Vertex << " ";
@@ -75,7 +78,22 @@ void GetAllNodes(vector<Node *> nodes)
 			next = next->NextEdge;
 		}
 		cout << endl << "点 " << nodes[i]->Vertex << " 的出度：" << Degree << endl;
+		DegreeNode.insert(make_pair(nodes[i]->Vertex, Degree));
 	}
+	int max_degree = 0, max_node = 0;
+	for (iter = DegreeNode.begin(); iter != DegreeNode.end(); iter++)
+	{
+		if (iter->second > max_degree)
+		{
+			max_node = iter->first;
+			max_degree = iter->second;
+		}
+		if (iter->second == 0)
+		{
+			cout << "点 " << iter->first << " 的度为 0" << endl;
+		}
+	}
+	cout << "点 " << max_node << " 出度最大 为" << max_degree << endl;
 }
 
 
