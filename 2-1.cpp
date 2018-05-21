@@ -1,5 +1,3 @@
-//未完善：一个字符串分离出数字与符号，数字要一串划分完整的数字
-//符号优先级的问题
 #include <iostream>
 #include <stack>
 #include <list>
@@ -41,13 +39,13 @@ list<string> InData(string s)
 					num--;
 					j++;
 				}
-				i = j-1 ;
+				i = j ;
 				sum += sum2;
 			}
 			ostringstream oss;  //创建一个格式化输出流
             oss<<sum;             //把值传递如流中
 			thelist.push_back(oss.str());
-			n = i;
+			n = i-1;
 		}
 		else
 		{
@@ -131,8 +129,9 @@ list<string> Change(list<string> A)
 			}
 		}
 	}
-	if (!theOperator.empty()){
+	while (!theOperator.empty()){
 		Expression.push_back(theOperator.top());
+		theOperator.pop();
 	}
 	return Expression;
 }
