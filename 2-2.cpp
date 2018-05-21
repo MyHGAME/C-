@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 const int MaxLen = 100;
 template <class DataType>
@@ -25,7 +26,7 @@ TheStack<DataType>::TheStack()
 template <class DataType>
 void TheStack<DataType>::push(char direct, DataType element)
 {
-	if (LTopPoint + 1 == RTopPoint) throw "…œ“Á";
+	if (LTopPoint + 1 == RTopPoint) throw "Ê†àÊª°";
 	if (direct == 'r')
 	{
 		Stack[--RTopPoint] = element;
@@ -40,13 +41,13 @@ DataType TheStack<DataType>::pop(char direct)
 {
 	if (direct == 'r')
 	{
-		if (RTopPoint0 == MaxLen) throw "…œ“Á";
+		if (RTopPoint == MaxLen) throw "Âè≥Ê†à‰∏∫Á©∫";
 		return Stack[RTopPoint++];
 	}
 	if (direct == 'l')
 	{
-		if (LTopPoint0 == -1) throw "œ¬“Á";
-		return Stack[LTopPoint--] = element;
+		if (LTopPoint == -1) throw "Â∑¶Ê†à‰∏∫Á©∫";
+		return Stack[LTopPoint--] ;
 	}
 
 }
@@ -66,10 +67,18 @@ DataType TheStack<DataType>::top(char direct)
 int main()
 {
 	TheStack<int> test;
-	test.push('r', 100);
-	test.push('l', 1002);
-	cout << test.top('r') << endl << test.top('l') << endl;
+	
+	try
+	{
+		cout<<""
+		while()
+		{
+		}
+	}
+	catch(string e)
+	{
+		cout<<e;
+	}
 	system("pause");
 	return 0;
 }
-
