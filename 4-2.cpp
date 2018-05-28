@@ -2,14 +2,17 @@
 #include <vector>
 using namespace std;
 
+
 vector<char> Create(vector<char> root)
 {
-	char data;
-	cin >> data;
-	while (data != '#')
+	//ä¸ç”¨è‡ªå·±è¾“å…¥åºåˆ—ï¼Œè¾“å…¥ä¸€ä¸ªæ•°è‡ªåŠ¨ç”Ÿæˆ
+	int i =0;
+	cin >> i;
+	int data = 'a';
+	while (i > 0)
 	{
-		root.push_back(data);
-		cin >> data;
+		root.push_back(data++);
+		i--;
 	}
 	return root;
 }
@@ -58,16 +61,15 @@ int main()
 		cout << root[i] << " ";
 	}
 	cout << endl;
-	cout << "Ç°Ðò±éÀú£º";
+	cout << "å‰åºéåŽ†ï¼š";
 	PreOrder(root, 0);
 	cout << endl;
-	cout << "ÖÐÐò±éÀú£º";
+	cout << "ä¸­åºéåŽ†ï¼š";
 	InOrder(root, 0);
 	cout << endl;
-	cout << "ºóÐò±éÀú£º";
+	cout << "åŽåºéåŽ†ï¼š";
 	PostOrder(root, 0);
 	cout << endl;
 	system("pause");
 	return 0;
 }
-
