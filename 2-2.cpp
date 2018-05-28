@@ -26,7 +26,7 @@ TheStack<DataType>::TheStack()
 template <class DataType>
 void TheStack<DataType>::push(char direct, DataType element)
 {
-	if (LTopPoint + 1 == RTopPoint) throw "栈满";
+	if (LTopPoint + 1 == RTopPoint) throw 1;
 	if (direct == 'r')
 	{
 		Stack[--RTopPoint] = element;
@@ -41,12 +41,12 @@ DataType TheStack<DataType>::pop(char direct)
 {
 	if (direct == 'r')
 	{
-		if (RTopPoint == MaxLen) throw "右栈为空";
+		if (RTopPoint == MaxLen) throw 2;
 		return Stack[RTopPoint++];
 	}
 	if (direct == 'l')
 	{
-		if (LTopPoint == -1) throw "左栈为空";
+		if (LTopPoint == -1) throw 3;
 		return Stack[LTopPoint--] ;
 	}
 
@@ -68,17 +68,53 @@ int main()
 {
 	TheStack<int> test;
 	
-	try
-	{
-		cout<<""
-		while()
+	
+		int n = 0;
+		cout<<"1.入栈 2.出栈 3.输出全部栈"<<endl;
+		cin>>n;
+		while(n != 0)
 		{
+			char dir = ' ';
+			int data = 0;
+			
+			switch(n)
+			{
+				case 1:
+					cout<<"输入格式为 (哪一个栈)r/l (栈的数据)data"<<endl;
+					cin>>dir>>data;
+					test.push(dir,data);
+				break;
+				case 2:
+					try{
+						cout<<"输入格式为 (哪一个栈)r/l"<<endl;
+						cin>>dir;
+						data = test.pop(dir);
+						cout<<"data: "<<data<<endl;
+					}
+					catch(int e)
+					{
+						//将e错误抛出
+						cout<<e<<endl;
+					}
+					
+				break;
+				case 3:
+					int l =  test.LTopPoint;
+					int r = test.RTopPoint;
+					cout<<"左边栈为："<<endl;
+					for(l;l > -1;l--)
+						cout<<test.Stack[l]<<"  ";
+					cout<<endl;
+					cout<<"右边栈为："<<endl;
+					for(r;r < MaxLen;r++)
+						cout<<test.Stack[r]<<"  ";
+					cout<<endl;
+				break;
+			}
+			cout<<"1.入栈 2.出栈 3.输出全部栈"<<endl;
+			cin>>n;
+			
 		}
-	}
-	catch(string e)
-	{
-		cout<<e;
-	}
 	system("pause");
 	return 0;
 }
